@@ -3,6 +3,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import "react-medium-image-zoom/dist/styles.css";
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

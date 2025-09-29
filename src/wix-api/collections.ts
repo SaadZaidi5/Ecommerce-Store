@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getWixClient } from "@/lib/wix-client.base";
+import { WixClient } from "@/lib/wix-client.base";
 
 /**
  * Fetch products for a given collection
@@ -7,11 +7,10 @@ import { getWixClient } from "@/lib/wix-client.base";
  * @param limit - Max number of products (default: 50)
  */
 export async function getProductsByCollection(
+  wixClient: WixClient,
   collectionId: string,
   limit = 50,
 ) {
-  const wixClient = getWixClient();
-
   try {
     const allProductsRes = await wixClient.products
       .queryProducts()

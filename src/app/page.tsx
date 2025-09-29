@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import Product from "@/components/Product";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getProductsByCollection } from "@/wix-api/collections";
+import { getWixServerClient } from "@/lib/wix-client.server";
 
 // You can swap this ID with any collection (passed to getProductsByCollection)
 const FEATURED_COLLECTION_ID = "9650a71d-f85b-4dd1-90f0-86be2bdf7a21";
@@ -57,7 +58,10 @@ export default function Home() {
 async function FeaturedProducts() {
   await delay(500); // optional suspense fallback delay (for smoother UX)
 
+  const wixClient = getWixServerClient();
+
   const featuredProducts = await getProductsByCollection(
+    await wixClient,
     FEATURED_COLLECTION_ID,
   );
 
